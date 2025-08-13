@@ -1,42 +1,242 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #fff7f0, #fff3ea);
+  margin: 0;
+  color: #333;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  /* width: 100%; */
+  margin: auto;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.products-section {
+  flex: 3;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #d35400;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .card {
-  padding: 2em;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  /* Qo‘shildi: qty-controls ni rasm ustida joylash uchun */
+  position: relative;
 }
 
-.read-the-docs {
-  color: #888;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.card-img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img {
+  /* transform: scale(1.05); */
+}
+
+.btn {
+  background: white;
+  border: 1px solid #eb9808;
+  padding: 14px 24px;
+  margin-top: -18px;
+  margin-left: 130px;
+  cursor: pointer;
+  border-radius: 25px;
+  font-size: 14px;
+  transition: background 0.3s ease, color 0.3s ease;
+  background: #ffefd9;
+  color: #d35400;
+}
+
+
+
+.qty-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: -20px;
+  position: absolute;
+  bottom: 10px;
+  left: 30%;
+  transform: translateX(-50%);
+  transform: translateY(-180%);
+  background: #d35400;
+  border-radius: 30px;
+  padding: 5px 15px;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  z-index: 2;
+}
+
+.qty-controls button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.qty-controls button:hover {
+  color: #ffe0b2;
+}
+
+.category {
+  color: gray;
+  font-size: 14px;
+}
+
+.name {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.price {
+  color: #d35400;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.cart {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  height: fit-content;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.cart-title {
+  font-size: 20px;
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.empty-cart {
+  text-align: center;
+  color: rgb(18, 18, 18);
+  padding: 20px 0;
+}
+
+.cart-list {
+  list-style: none;
+  padding: 0;
+}
+
+.btn-confirm {
+  background: #c0392b;
+  color: white;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btn-confirm:hover {
+  background: #a93226;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.loader {
+  text-align: center;
+  padding: 50px;
+  font-size: 18px;
+  color: #c0392b;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0; /* ichki padding olib tashlanadi */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-align: left;
+  border: 1px solid #eee;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card .name {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 8px 0 4px;
+}
+
+.card .price {
+  color: #d35400;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* -------- Responsive styles -------- */
+
+/* Tablet view (max 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column; /* Cart pastga tushadi */
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* Tablet: 3 ustun */
+  }
+  .cart {
+    width: 100%;
+  }
+}
+
+/* Mobile view (max-width: 768px) */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr); /* Mobile: 1 ustun */
+  }
 }
