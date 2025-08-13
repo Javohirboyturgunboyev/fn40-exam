@@ -185,7 +185,8 @@ body {
   text-align: center;
   padding: 50px;
   font-size: 18px;
-  color: #c0392b;
+  color: rgb(33, 211, 17);
+  padding-left: 750px;
 }
 
 .card {
